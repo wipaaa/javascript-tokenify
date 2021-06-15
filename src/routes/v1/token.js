@@ -1,4 +1,3 @@
-const { utils } = require('ethers');
 const express = require('express');
 const tokenController = require('../../controllers/token-controller');
 
