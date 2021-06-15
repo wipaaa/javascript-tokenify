@@ -12,9 +12,11 @@ module.exports = class Linker {
     providerOrUrl: constants.uriRemoteProvider,
   };
 
-  async connect(options = {}) {
+  constructor(options = {}) {
     this.#_mergeOptions(options);
+  }
 
+  async connect() {
     this.#_provider = new JsonRpcProvider(this.#_options.providerOrUrl);
     await this.#_provider.ready; // await to provider to be connected
     this.#_wallet = new Wallet(this.#_options.privateKey, this.#_provider);
