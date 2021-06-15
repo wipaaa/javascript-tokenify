@@ -19,16 +19,18 @@ module.exports = class Artificer {
     const compiled = this.#_compile(replacements);
     const factory = ContractFactory.fromSolidity(compiled.Token, signer);
     const contract = await factory.deploy();
-    const receipt = await contract.deployTransaction.wait();
-
-    await this.#_transferContractOwnership(contract);
+    const cReceipt = await contract.deployTransaction.wait();
+    const tReceipt = await this.#_transferContractOwnership(contract);
 
     return {
       contract: {
         address: contract.address,
         interface: contract.interface,
       },
-      receipt,
+      receipt: {
+        creation: cReceipt,
+        transfer: tReceipt,
+      },
     };
   }
 
@@ -55,6 +57,8 @@ module.exports = class Artificer {
 
   async #_transferContractOwnership(contract) {
     const owner = this.#_pullOwner(); // auto reset the owner to null
-    await contract.transferOwnership(owner);
+    const receipt = await contract.transferOwnership(owner);
+
+    return await receipt.wait();
   }
 };
