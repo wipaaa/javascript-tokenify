@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "start:watch": "nodemon src",
+    "start": "node src"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "nodemon": "^2.0.7"
+  }
+}
