@@ -5,6 +5,7 @@
     "start": "node src"
   },
   "dependencies": {
+    "ethers": "^5.3.1",
     "solc": "0.5.12"
   },
   "devDependencies": {
