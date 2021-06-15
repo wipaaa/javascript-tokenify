@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "ethers": "^5.3.1",
+    "express": "^4.17.1",
     "solc": "0.5.12"
   },
   "devDependencies": {
